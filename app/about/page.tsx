@@ -1,8 +1,9 @@
+import Image from "next/image";
 import { Download, Mail, MapPin } from "lucide-react";
 
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { MockFrame, Pill, SectionLabel } from "@/components/ui";
+import { Pill, SectionLabel } from "@/components/ui";
 import { experienceTimeline, technicalGroups } from "@/lib/site-data";
 
 export default function AboutPage() {
@@ -15,12 +16,23 @@ export default function AboutPage() {
           <div className="relative">
             <div className="absolute inset-x-3 top-3 h-full border border-[var(--border)] bg-[#efe3d8]" />
             <div className="relative border border-[var(--border)] bg-[var(--surface)] p-2">
-              <MockFrame
-                title="Portrait"
-                subtitle="Founder Mock"
-                dark
-                heightClass="h-[520px]"
-              />
+              <div className="flex h-[520px] items-center justify-center bg-[radial-gradient(circle_at_top,#2e2722,transparent_55%),linear-gradient(180deg,#1f1915,#15110f)] p-8 text-center">
+                <div>
+                  <Image
+                    src="/images/namacart-logo-light.svg"
+                    alt="NamaCart logo"
+                    width={280}
+                    height={64}
+                    className="mx-auto h-auto w-[240px] sm:w-[280px]"
+                  />
+                  <p className="mt-6 font-display text-3xl font-bold tracking-[-0.04em] text-[#f7eadf]">
+                    Founder Asset Placeholder
+                  </p>
+                  <p className="mt-3 font-mono text-xs uppercase tracking-[0.28em] text-[#bbab9b]">
+                    Replace with uploaded portrait later
+                  </p>
+                </div>
+              </div>
             </div>
             <div className="absolute bottom-[-16px] right-[-12px] border border-[var(--accent)] bg-[var(--surface)] px-5 py-4 font-mono text-sm uppercase tracking-[0.18em] text-[var(--accent)] shadow-[6px_6px_0_var(--accent)]">
               Founder, NamaCart

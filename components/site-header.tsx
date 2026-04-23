@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { isBlogEnabled } from "@/lib/site-config";
 import { navItems } from "@/lib/site-data";
 
 type SiteHeaderProps = {
@@ -15,6 +16,10 @@ export function SiteHeader({
   ctaHref = "/projects/namacart",
   brand = "Chanakya Bugata",
 }: SiteHeaderProps) {
+  const visibleNavItems = navItems.filter(
+    (item) => item.key !== "blog" || isBlogEnabled,
+  );
+
   return (
     <header className="border-b border-[var(--border)] bg-[var(--surface)]/90 backdrop-blur-sm">
       <div className="mx-auto flex max-w-[1180px] items-center justify-between px-6 py-5 lg:px-10">
@@ -26,7 +31,7 @@ export function SiteHeader({
         </Link>
 
         <nav className="hidden items-center gap-10 text-[1.05rem] text-[var(--muted)] md:flex">
-          {navItems.map((item) => {
+          {visibleNavItems.map((item) => {
             const isActive = item.key === current;
 
             return (

@@ -1,6 +1,8 @@
+import Image from "next/image";
+
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { MockFrame, Pill, SectionLabel } from "@/components/ui";
+import { Pill, SectionLabel } from "@/components/ui";
 
 export default function NamaCartPage() {
   return (
@@ -13,7 +15,7 @@ export default function NamaCartPage() {
             <div className="max-w-[620px]">
               <Pill tone="accent">Fintech / E-Commerce</Pill>
               <h1 className="font-display mt-8 text-6xl font-black tracking-[-0.06em] sm:text-7xl">
-                NamaCart: Digitizing South India&apos;s Local Commerce.
+                NamaCart: Digitizing India&apos;s Local Commerce.
               </h1>
               <p className="mt-8 text-xl leading-9 text-[#b9ab9f]">
                 A full-stack ecosystem transforming unorganized local retail
@@ -38,13 +40,22 @@ export default function NamaCartPage() {
               </div>
             </div>
 
-            <MockFrame
-              title="Network"
-              subtitle="Commerce Graph Mock"
-              dark
-              accent="blue"
-              heightClass="h-[420px]"
-            />
+            <div className="flex h-[420px] items-center justify-center overflow-hidden rounded-[20px] border border-white/8 bg-[radial-gradient(circle_at_top,#4a2618,transparent_35%),linear-gradient(135deg,#2a1e18,#17141d_55%,#132128)] p-10">
+              <div className="space-y-8 text-center">
+                <Image
+                  src="/images/namacart-logo-light.svg"
+                  alt="NamaCart logo"
+                  width={300}
+                  height={68}
+                  className="mx-auto h-auto w-[240px] sm:w-[300px]"
+                  priority
+                />
+                <div className="mx-auto h-px w-40 bg-white/12" />
+                <p className="font-mono text-xs uppercase tracking-[0.3em] text-[#b9ab9f]">
+                  Structured Commerce Layer
+                </p>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -131,12 +142,25 @@ export default function NamaCartPage() {
               ].map((card) => (
                 <article key={card.title} className="overflow-hidden rounded-[20px] border border-[var(--border)] bg-[var(--surface)]">
                   <div className="p-6">
-                    <MockFrame
-                      title={card.title.split(" ")[0]}
-                      subtitle="Interface Mock"
-                      accent={card.accent}
-                      heightClass="h-[220px]"
-                    />
+                    <div
+                      className={`flex h-[220px] items-center justify-center rounded-[20px] border border-[var(--border)] ${
+                        card.accent === "forest"
+                          ? "bg-[#e8f3ed]"
+                          : card.accent === "blue"
+                            ? "bg-[#e9f0fb]"
+                            : "bg-[#faece4]"
+                      }`}
+                    >
+                      <div className="rounded-[18px] border border-[var(--border)] bg-white px-6 py-10 shadow-[0_16px_40px_rgba(39,28,22,0.08)]">
+                        <Image
+                          src="/images/namacart-mark.svg"
+                          alt="NamaCart mark"
+                          width={78}
+                          height={78}
+                          className="h-[78px] w-[78px]"
+                        />
+                      </div>
+                    </div>
                   </div>
                   <div className="border-t border-[var(--border)] p-6">
                     <h3 className="font-display text-3xl font-bold tracking-[-0.04em]">

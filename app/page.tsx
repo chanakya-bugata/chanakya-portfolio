@@ -1,8 +1,9 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { MockFrame, Pill } from "@/components/ui";
+import { Pill } from "@/components/ui";
 import { homeStats, projects } from "@/lib/site-data";
 
 export default function Home() {
@@ -27,7 +28,7 @@ export default function Home() {
               </h1>
 
               <p className="mt-8 max-w-[620px] text-xl leading-9 text-[var(--muted)]">
-                I engineer sophisticated digital experiences bridging South
+                I engineer sophisticated digital experiences bridging
                 Indian heritage with modern technological precision. Founder of
                 NamaCart.
               </p>
@@ -52,12 +53,17 @@ export default function Home() {
               <div className="absolute inset-x-4 top-4 h-full rounded-[22px] border border-[var(--border)] bg-[#f2e3d8]" />
               <div className="relative overflow-hidden rounded-[20px] border border-[#2f2822] bg-[#17141d] p-8 shadow-[0_20px_60px_rgba(39,28,22,0.14)]">
                 <div className="flex aspect-square items-center justify-center rounded-[18px] border border-white/8 bg-[radial-gradient(circle_at_top,#2f2a34,transparent_55%),linear-gradient(180deg,#17141d,#131017)] text-center">
-                  <div>
-                    <p className="font-display text-3xl font-bold text-[#f7eadf]">
-                      Portrait
-                    </p>
-                    <p className="mt-3 font-mono text-xs uppercase tracking-[0.3em] text-[#bbab9b]">
-                      Asset Coming Soon
+                  <div className="space-y-6">
+                    <Image
+                      src="/images/namacart-logo-light.svg"
+                      alt="NamaCart logo"
+                      width={260}
+                      height={60}
+                      className="mx-auto h-auto w-[220px] sm:w-[260px]"
+                      priority
+                    />
+                    <p className="font-mono text-xs uppercase tracking-[0.3em] text-[#bbab9b]">
+                      Founder Portrait Will Be Added Here
                     </p>
                   </div>
                 </div>
@@ -105,12 +111,17 @@ export default function Home() {
           <div className="grid gap-4 lg:grid-cols-[2.1fr_1fr]">
             <article className="overflow-hidden rounded-[24px] border border-[var(--border)] bg-[var(--surface)]">
               <div className="border-b border-[var(--border)] bg-[#e7f2ee] p-8 md:p-10">
-                <MockFrame
-                  title="NamaCart"
-                  subtitle="Primary Case Study Mock"
-                  accent="forest"
-                  heightClass="h-[300px]"
-                />
+                <div className="flex h-[300px] items-center justify-center rounded-[20px] border border-[var(--border)] bg-[linear-gradient(180deg,#edf7f2,#f8f4ec)]">
+                  <div className="rounded-[20px] border border-[var(--border)] bg-white px-10 py-14 shadow-[0_18px_50px_rgba(39,28,22,0.08)]">
+                    <Image
+                      src="/images/namacart-logo.svg"
+                      alt="NamaCart logo"
+                      width={300}
+                      height={68}
+                      className="h-auto w-[220px] sm:w-[300px]"
+                    />
+                  </div>
+                </div>
               </div>
 
               <div className="p-6 md:p-8">

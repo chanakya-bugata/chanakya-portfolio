@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { isBlogEnabled } from "@/lib/site-config";
 import { Pill } from "@/components/ui";
 import { blogPosts } from "@/lib/site-data";
 
@@ -15,10 +16,18 @@ const articleBody = [
 ];
 
 export async function generateStaticParams() {
+  if (!isBlogEnabled) {
+    return [];
+  }
+
   return blogPosts.map((post) => ({ slug: post.slug }));
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
+  if (!isBlogEnabled) {
+    notFound();
+  }
+
   const { slug } = await params;
   const post = blogPosts.find((entry) => entry.slug === slug);
 
