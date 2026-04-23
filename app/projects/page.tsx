@@ -1,0 +1,129 @@
+import Link from "next/link";
+
+import { PageIntro } from "@/components/page-intro";
+import { SiteFooter } from "@/components/site-footer";
+import { SiteHeader } from "@/components/site-header";
+import { MockFrame, Pill } from "@/components/ui";
+import { projects } from "@/lib/site-data";
+
+export default function ProjectsPage() {
+  const featured = projects[3];
+  const others = [projects[0], projects[1], projects[2]];
+
+  return (
+    <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
+      <SiteHeader current="projects" />
+
+      <main>
+        <PageIntro
+          title="Selected Works"
+          description="A curated collection of scalable architectures, commercial platforms, and technical explorations built with precision."
+          actions={
+            <div className="rounded-full bg-[var(--accent)] px-5 py-3 font-mono text-sm uppercase tracking-[0.18em] text-white">
+              03 Entities Found
+            </div>
+          }
+        />
+
+        <section className="mx-auto max-w-[1180px] px-6 pb-18 lg:px-10">
+          <article className="overflow-hidden rounded-[24px] border border-[var(--accent)] bg-[#201a16] text-[#f4ede5] shadow-[10px_10px_0_var(--accent)]">
+            <div className="grid lg:grid-cols-[1.2fr_1fr]">
+              <div className="p-10 md:p-14">
+                <div className="flex flex-wrap gap-2">
+                  <Pill tone="accent">Featured Platform</Pill>
+                  <Pill> B2B Commerce </Pill>
+                </div>
+                <h2 className="font-display mt-10 text-6xl font-black tracking-[-0.06em]">
+                  {featured.title}
+                </h2>
+                <p className="mt-8 max-w-[560px] text-xl leading-9 text-[#bbaea1]">
+                  {featured.description}
+                </p>
+
+                <div className="mt-16 grid gap-6 border-t border-white/10 pt-8 sm:grid-cols-3">
+                  <div>
+                    <p className="font-display text-5xl font-bold text-[var(--accent)]">4.2M+</p>
+                    <p className="mt-3 font-mono text-xs uppercase tracking-[0.22em] text-[#8f8277]">
+                      Transactions Processed
+                    </p>
+                  </div>
+                  <div>
+                    <p className="font-display text-5xl font-bold text-[var(--accent)]">850+</p>
+                    <p className="mt-3 font-mono text-xs uppercase tracking-[0.22em] text-[#8f8277]">
+                      Active Vendors
+                    </p>
+                  </div>
+                  <div>
+                    <p className="font-display text-5xl font-bold text-[var(--accent)]">99.9%</p>
+                    <p className="mt-3 font-mono text-xs uppercase tracking-[0.22em] text-[#8f8277]">
+                      System Uptime
+                    </p>
+                  </div>
+                </div>
+
+                <Link
+                  href={`/projects/${featured.slug}`}
+                  className="mt-16 inline-flex rounded-2xl bg-[var(--accent)] px-7 py-4 text-lg font-medium text-white"
+                >
+                  View Case Study
+                </Link>
+              </div>
+
+              <div className="border-l border-white/8 p-8 md:p-10">
+                <MockFrame
+                  title="Analytics"
+                  subtitle="Dashboard Mock"
+                  dark
+                  heightClass="h-full min-h-[520px]"
+                />
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <section className="mx-auto max-w-[1180px] px-6 pb-24 lg:px-10">
+          <div className="mb-8 flex items-end justify-between border-b border-[var(--border)] pb-4">
+            <h2 className="font-display text-4xl font-bold tracking-[-0.05em]">
+              Supporting Capabilities
+            </h2>
+            <p className="font-mono text-sm uppercase tracking-[0.2em] text-[var(--muted)]">
+              03 Entities Found
+            </p>
+          </div>
+
+          <div className="grid gap-4 lg:grid-cols-3">
+            {others.map((project, index) => (
+              <article
+                key={project.slug}
+                className="rounded-[20px] border border-[var(--border)] bg-[var(--surface)] p-6"
+              >
+                <div className="flex items-center justify-between">
+                  <Pill tone={index === 0 ? "accent" : index === 1 ? "forest" : "default"}>
+                    {project.tags[0]}
+                  </Pill>
+                  <span className="font-mono text-xs uppercase tracking-[0.2em] text-[var(--muted)]">
+                    {"</>"}
+                  </span>
+                </div>
+
+                <h3 className="font-display mt-8 text-4xl font-bold tracking-[-0.05em]">
+                  {project.title}
+                </h3>
+                <p className="mt-5 text-lg leading-8 text-[var(--muted)]">
+                  {project.summary}
+                </p>
+                <div className="mt-10 flex flex-wrap gap-2">
+                  {project.tags.map((tag) => (
+                    <Pill key={tag}>{tag}</Pill>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+      </main>
+
+      <SiteFooter inverted />
+    </div>
+  );
+}
