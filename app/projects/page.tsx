@@ -8,8 +8,9 @@ import { Pill } from "@/components/ui";
 import { projects } from "@/lib/site-data";
 
 export default function ProjectsPage() {
-  const featured = projects[3];
-  const others = [projects[0], projects[1], projects[2]];
+  const featured =
+    projects.find((project) => project.slug === "namacart") ?? projects[0];
+  const others = projects.filter((project) => project.slug !== featured.slug);
 
   return (
     <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
@@ -21,7 +22,7 @@ export default function ProjectsPage() {
           description="A curated collection of scalable architectures, commercial platforms, and technical explorations built with precision."
           actions={
             <div className="rounded-full bg-[var(--accent)] px-5 py-3 font-mono text-sm uppercase tracking-[0.18em] text-white">
-              03 Entities Found
+              {projects.length.toString().padStart(2, "0")} Entities Found
             </div>
           }
         />
@@ -34,79 +35,48 @@ export default function ProjectsPage() {
                   <Pill tone="accent">Featured Platform</Pill>
                   <Pill> B2B Commerce </Pill>
                 </div>
-                <h2 className="font-display mt-10 text-6xl font-black tracking-[-0.06em]">
-                  {featured.title}
+                <Image
+                  src="/images/namacart-mark.svg"
+                  alt="NamaCart mark"
+                  width={64}
+                  height={64}
+                  className="mt-10 h-14 w-14"
+                />
+                <h2 className="font-display mt-6 text-6xl font-black tracking-[-0.06em]">
+                  Nama<span className="text-[var(--accent)]">Cart</span>{" "}
+                  <span className="text-[#f4ede5]">(Early Stage)</span>
                 </h2>
                 <p className="mt-8 max-w-[560px] text-xl leading-9 text-[#bbaea1]">
                   {featured.description}
                 </p>
 
-                <div className="mt-16 grid gap-6 border-t border-white/10 pt-8 sm:grid-cols-3">
-                  <div>
-                    <p className="font-display text-5xl font-bold text-[var(--accent)]">4.2M+</p>
-                    <p className="mt-3 font-mono text-xs uppercase tracking-[0.22em] text-[#8f8277]">
-                      Transactions Processed
-                    </p>
-                  </div>
-                  <div>
-                    <p className="font-display text-5xl font-bold text-[var(--accent)]">850+</p>
-                    <p className="mt-3 font-mono text-xs uppercase tracking-[0.22em] text-[#8f8277]">
-                      Active Vendors
-                    </p>
-                  </div>
-                  <div>
-                    <p className="font-display text-5xl font-bold text-[var(--accent)]">99.9%</p>
-                    <p className="mt-3 font-mono text-xs uppercase tracking-[0.22em] text-[#8f8277]">
-                      System Uptime
-                    </p>
-                  </div>
+                <div className="mt-16 flex flex-wrap gap-4 border-t border-white/10 pt-8">
+                  <Link
+                    href={`/projects/${featured.slug}`}
+                    className="inline-flex rounded-2xl bg-[var(--accent)] px-7 py-4 text-lg font-medium text-white"
+                  >
+                    View Case Study
+                  </Link>
+                  <Link
+                    href="https://namacart.in"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex rounded-2xl border border-white/14 bg-white/5 px-7 py-4 text-lg font-medium text-[#f4ede5] transition-colors hover:bg-white/10"
+                  >
+                    Visit NamaCart.in
+                  </Link>
                 </div>
-
-                <Link
-                  href={`/projects/${featured.slug}`}
-                  className="mt-16 inline-flex rounded-2xl bg-[var(--accent)] px-7 py-4 text-lg font-medium text-white"
-                >
-                  View Case Study
-                </Link>
               </div>
 
               <div className="border-l border-white/8 p-8 md:p-10">
-                <div className="flex h-full min-h-[520px] items-center justify-center rounded-[20px] border border-white/8 bg-[radial-gradient(circle_at_top,#31261f,transparent_50%),linear-gradient(180deg,#1f1814,#181410)] p-10">
-                  <div className="space-y-8 text-center">
-                    <Image
-                      src="/images/namacart-logo-light.svg"
-                      alt="NamaCart logo"
-                      width={300}
-                      height={68}
-                      className="mx-auto h-auto w-[240px] sm:w-[300px]"
-                    />
-                    <div className="grid grid-cols-3 gap-4 border-t border-white/10 pt-8">
-                      <div>
-                        <p className="font-display text-3xl font-bold text-[var(--accent)]">
-                          4.2M+
-                        </p>
-                        <p className="mt-2 font-mono text-[0.7rem] uppercase tracking-[0.2em] text-[#8f8277]">
-                          Transactions
-                        </p>
-                      </div>
-                      <div>
-                        <p className="font-display text-3xl font-bold text-[var(--accent)]">
-                          850+
-                        </p>
-                        <p className="mt-2 font-mono text-[0.7rem] uppercase tracking-[0.2em] text-[#8f8277]">
-                          Vendors
-                        </p>
-                      </div>
-                      <div>
-                        <p className="font-display text-3xl font-bold text-[var(--accent)]">
-                          99.9%
-                        </p>
-                        <p className="mt-2 font-mono text-[0.7rem] uppercase tracking-[0.2em] text-[#8f8277]">
-                          Uptime
-                        </p>
-                      </div>
-                    </div>
-                  </div>
+                <div className="relative h-full min-h-[520px] overflow-hidden rounded-[20px] border border-white/8 bg-[radial-gradient(circle_at_top,#31261f,transparent_50%),linear-gradient(180deg,#1f1814,#181410)] p-4">
+                  <Image
+                    src="/images/phone-mock.png"
+                    alt="NamaCart mobile product preview"
+                    fill
+                    className="object-contain object-center p-4"
+                    sizes="(min-width: 1024px) 38vw, 100vw"
+                  />
                 </div>
               </div>
             </div>
@@ -119,7 +89,7 @@ export default function ProjectsPage() {
               Supporting Capabilities
             </h2>
             <p className="font-mono text-sm uppercase tracking-[0.2em] text-[var(--muted)]">
-              03 Entities Found
+              {others.length.toString().padStart(2, "0")} Entities Found
             </p>
           </div>
 

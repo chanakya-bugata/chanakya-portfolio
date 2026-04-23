@@ -7,8 +7,11 @@ import { Pill } from "@/components/ui";
 import { homeStats, projects } from "@/lib/site-data";
 
 export default function Home() {
-  const featured = projects[0];
-  const sideProjects = projects.slice(1, 3);
+  const featured =
+    projects.find((project) => project.slug === "namacart") ?? projects[0];
+  const sideProjects = projects
+    .filter((project) => project.slug !== featured.slug)
+    .slice(0, 2);
 
   return (
     <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
@@ -19,12 +22,12 @@ export default function Home() {
           <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
             <div className="max-w-[640px]">
               <div className="inline-flex rounded-full border border-[var(--border)] bg-[var(--surface)] px-4 py-2 font-mono text-[0.76rem] font-semibold uppercase tracking-[0.24em] text-[var(--accent)]">
-                CS Student & NamaCart Founder
+                Accenture Intern & Building NamaCart
               </div>
 
               <h1 className="font-display mt-8 text-5xl leading-[0.95] font-black tracking-[-0.05em] text-[var(--foreground)] sm:text-6xl lg:text-[5.2rem]">
-                Build a portfolio that{" "}
-                <span className="text-[var(--accent)]">converts investors.</span>
+                Engineering{" "}
+                <span className="text-[var(--accent)]">Real products.</span>
               </h1>
 
               <p className="mt-8 max-w-[620px] text-xl leading-9 text-[var(--muted)]">
@@ -49,21 +52,41 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="relative mx-auto w-full max-w-[460px]">
-              <div className="absolute inset-x-4 top-4 h-full rounded-[22px] border border-[var(--border)] bg-[#f2e3d8]" />
-              <div className="relative overflow-hidden rounded-[20px] border border-[#2f2822] bg-[#17141d] p-8 shadow-[0_20px_60px_rgba(39,28,22,0.14)]">
-                <div className="flex aspect-square items-center justify-center rounded-[18px] border border-white/8 bg-[radial-gradient(circle_at_top,#2f2a34,transparent_55%),linear-gradient(180deg,#17141d,#131017)] text-center">
-                  <div className="space-y-6">
-                    <Image
-                      src="/images/namacart-logo-light.svg"
-                      alt="NamaCart logo"
-                      width={260}
-                      height={60}
-                      className="mx-auto h-auto w-[220px] sm:w-[260px]"
-                      priority
-                    />
-                    <p className="font-mono text-xs uppercase tracking-[0.3em] text-[#bbab9b]">
-                      Founder Portrait Will Be Added Here
+            <div className="relative mx-auto w-full max-w-[520px]">
+              <div className="absolute -right-4 top-8 h-[90%] w-[92%] rounded-[32px] bg-[var(--accent)]/18 blur-3xl" />
+              <div className="absolute -left-6 top-14 h-24 w-24 rounded-full border border-[var(--accent)]/30 bg-[var(--accent)]/10 blur-[2px]" />
+              <div className="absolute -right-5 bottom-16 h-32 w-32 rounded-full border border-[#2f2822]/10 bg-[#2f2822]/6" />
+              <div className="absolute left-2 top-1/2 hidden h-24 w-px -translate-y-1/2 bg-[linear-gradient(180deg,transparent,var(--accent),transparent)] lg:block" />
+              <div className="absolute -left-3 top-20 hidden rounded-full border border-[var(--accent)] bg-white/80 px-4 py-2 font-mono text-[0.72rem] uppercase tracking-[0.22em] text-[var(--accent)] backdrop-blur md:block">
+                Founder
+              </div>
+          
+              <div className="relative overflow-hidden rounded-[32px] border border-[#2f2822] bg-[#17141d] p-5 shadow-[0_28px_80px_rgba(39,28,22,0.22)]">
+                <div className="overflow-hidden rounded-[26px] border border-white/8 bg-[radial-gradient(circle_at_top,#3d3645,transparent_32%),linear-gradient(180deg,#25202b,#15111b)]">
+                  <div className="flex items-center justify-between border-b border-white/8 px-5 py-4">
+                    <div className="flex gap-2">
+                      <span className="h-3 w-3 rounded-full bg-[var(--accent)]" />
+                      <span className="h-3 w-3 rounded-full bg-[#f0c48d]" />
+                      <span className="h-3 w-3 rounded-full bg-[#8a7f76]" />
+                    </div>
+                    <p className="font-mono text-[0.68rem] uppercase tracking-[0.24em] text-[#b9ab9f]">
+                      Chanakya Bugata
+                    </p>
+                  </div>
+                  <Image
+                    src="/images/chanakya.png"
+                    alt="Chanakya Bugata portrait"
+                    width={900}
+                    height={900}
+                    className="h-[560px] w-full object-cover object-top"
+                    priority
+                  />
+                  <div className="border-t border-white/8 bg-[linear-gradient(180deg,rgba(23,17,27,0.96),rgba(23,17,27,0.92))] px-6 py-5">
+                    <p className="font-display text-2xl font-bold tracking-[-0.04em] text-[#f6ede5]">
+                      Systems thinker with a bias for shipping.
+                    </p>
+                    <p className="mt-2 font-mono text-[0.72rem] uppercase tracking-[0.22em] text-[#b9ab9f]">
+                      From idea to working product.
                     </p>
                   </div>
                 </div>
@@ -87,10 +110,16 @@ export default function Home() {
                   </p>
                   <p
                     className={`font-display mt-3 text-2xl font-bold tracking-[-0.04em] sm:text-[2.1rem] ${
-                      "accent" in stat && stat.accent ? "text-[var(--forest)]" : ""
+                      "accent" in stat && stat.accent ? "text-[var(--foreground)]" : ""
                     }`}
                   >
-                    {stat.value}
+                    {"accent" in stat && stat.accent ? (
+                      <>
+                        Nama<span className="text-[var(--accent)]">Cart</span>
+                      </>
+                    ) : (
+                      stat.value
+                    )}
                   </p>
                 </div>
               ))}
