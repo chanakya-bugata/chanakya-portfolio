@@ -19,6 +19,7 @@ export function SiteHeader({
   const visibleNavItems = navItems.filter(
     (item) => item.key !== "blog" || isBlogEnabled,
   );
+  const isNamaCartCta = ctaLabel === "NamaCart ->";
 
   return (
     <header className="border-b border-[var(--border)] bg-[var(--surface)]/90 backdrop-blur-sm">
@@ -53,9 +54,22 @@ export function SiteHeader({
 
         <Link
           href={ctaHref}
-          className="rounded-2xl bg-[var(--accent)] px-6 py-4 text-lg font-medium text-white transition-transform hover:-translate-y-0.5"
+          className={`rounded-2xl px-6 py-4 text-lg font-medium transition-transform hover:-translate-y-0.5 ${
+            isNamaCartCta
+              ? "font-display bg-[#2c211b] text-[#f7efe6] hover:bg-[#241a15]"
+              : "bg-[var(--accent)] text-white"
+          }`}
         >
-          {ctaLabel}
+          {isNamaCartCta ? (
+            <>
+              <span className="text-[#f4ede5]">
+                Nama
+              </span>
+              <span className="text-[var(--accent)]">Cart</span> {"->"}
+            </>
+          ) : (
+            ctaLabel
+          )}
         </Link>
       </div>
     </header>

@@ -110,10 +110,16 @@ export default function Home() {
                   </p>
                   <p
                     className={`font-display mt-3 text-2xl font-bold tracking-[-0.04em] sm:text-[2.1rem] ${
-                      "accent" in stat && stat.accent ? "text-[var(--forest)]" : ""
+                      "accent" in stat && stat.accent ? "text-[var(--foreground)]" : ""
                     }`}
                   >
-                    {stat.value}
+                    {"accent" in stat && stat.accent ? (
+                      <>
+                        Nama<span className="text-[var(--accent)]">Cart</span>
+                      </>
+                    ) : (
+                      stat.value
+                    )}
                   </p>
                 </div>
               ))}
