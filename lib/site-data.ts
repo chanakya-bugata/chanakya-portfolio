@@ -32,62 +32,58 @@ export const navItems: NavItem[] = [
 ];
 
 export const footerLinks = [
-  { label: "LinkedIn", href: "#" },
-  { label: "GitHub", href: "#" },
-  { label: "Twitter", href: "#" },
-  { label: "RSS", href: "#" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/chanakya-bugata/" },
+  { label: "GitHub", href: "https://github.com/chanakya-bugata" },
 ];
 
 export const homeStats = [
-  { label: "Academic Standing", value: "CGPA 8.38" },
-  { label: "Experience", value: "Infosys Intern" },
-  { label: "Achievement", value: "HackWithInfy '25" },
-  { label: "Current Venture", value: "NamaCart", accent: true },
+  { label: "Education", value: "B.Tech CSE (2026)" },
+  { label: "Employee", value: "Accenture" },
+  { label: "Previous", value: "Infosys Intern" },
+  { label: "Current Focus", value: "NamaCart", accent: true },
 ];
 
 export const projects: Project[] = [
   {
-    slug: "namacart",
-    title: "NamaCart Platform",
+    slug: "legal-ai-assist",
+    title: "Legal AI Assist",
     summary:
-      "A specialized e-commerce ecosystem designed to bring traditional Indian artisanal goods to modern consumers.",
+      "AI-powered system that simplifies complex legal documents for non-legal users.",
     description:
-      "A full-stack commerce system focused on local retail digitization, catalog operations, merchant enablement, and logistics orchestration.",
-    tags: ["Fintech", "E-Commerce", "Founder"],
-    meta: "2024 / Active",
+      "Built an LLM-based application to process legal documents and generate simplified explanations. Focused on improving accessibility by translating complex legal language into understandable summaries. Designed a pipeline for document input, processing, and prompt-based summarization.",
+    tags: ["AI", "LLM", "NLP", "Python"],
+    meta: "2026 / Active",
     featured: true,
-    dark: true,
   },
   {
-    slug: "project-alpha",
-    title: "Project Alpha",
+    slug: "namacart",
+    title: "NamaCart (Early Stage)",
     summary:
-      "Advanced state management dashboard for enterprise resource planning.",
+      "Hyperlocal commerce platform connecting neighborhood stores with customers.",
     description:
-      "An internal operations interface for multi-team planning, reporting, and analytics across enterprise workflows.",
-    tags: ["React", "Dashboard"],
-    meta: "2024 / Q1",
-    dark: true,
+      "An early-stage startup focused on enabling local retailers to digitize their operations. Conducted market research, designed product flows, and defined scalable system architecture. Currently building initial validation version (V0) focused on reserve-and-pickup model.",
+    tags: ["Startup", "E-Commerce", "System Design"],
+    meta: "2026 / In Progress",
   },
   {
-    slug: "infy-solutions",
-    title: "Infy Solutions",
+    slug: "voicebridge",
+    title: "VoiceBridge",
     summary:
-      "Winning entry for HackWithInfy '25. Algorithmic optimization tool.",
+      "Real-time multilingual speech translation system.",
     description:
-      "A performance-minded build focused on algorithmic optimization, implementation clarity, and presentable product thinking.",
-    tags: ["Hackathon", "Java"],
-    meta: "2025 / Q1",
+      "Built a real-time translation pipeline using external APIs. Implemented speech-to-text, translation, and response flow. Backend deployed using Docker for scalability.",
+    tags: ["React", "FastAPI", "Docker", "GCP"],
+    meta: "2025",
   },
   {
     slug: "multi-vendor-suite",
-    title: "Multi-Vendor Suite",
+    title: "Multi-Vendor Commerce System",
     summary:
-      "A commerce stack for vendor operations, catalog synchronization, and order tracking.",
+      "Backend system for vendor operations, catalog, and order management.",
     description:
-      "Built to coordinate vendors, inventory flows, and settlement touchpoints using backend-heavy application design.",
-    tags: ["Node.js", "PostgreSQL", "AWS"],
-    meta: "2023 / Q4",
+      "Designed REST APIs for authentication, product catalog, and order workflows using NestJS and PostgreSQL. Deployed using Docker and AWS. Forms the technical base for NamaCart.",
+    tags: ["Node.js", "PostgreSQL", "AWS", "Docker"],
+    meta: "2024",
   },
 ];
 
@@ -159,11 +155,19 @@ export const technicalGroups = [
 
 export const experienceTimeline = [
   {
-    years: "Starting",
-    title: "Founder & Lead Engineer",
+    years: "2026",
+    title: "Founder (Early Stage)",
     organization: "NamaCart",
     description:
-      "Architecting and developing a comprehensive e-commerce platform. Leading the technical strategy, deciding on stack architecture (NestJS, React), and managing deployment pipelines on AWS to ensure high availability.",
+      "Conducting market research, designing system architecture, and building the initial product roadmap for a hyperlocal commerce platform.",
+    accent: "ink",
+  },
+  {
+    years: "2026 – Present",
+    title: "Software Engineer",
+    organization: "Accenture",
+    description:
+      "Working on enterprise applications and contributing to development workflows, API integrations, and maintaining scalable systems within Agile environments.",
     accent: "accent",
   },
   {
@@ -171,15 +175,15 @@ export const experienceTimeline = [
     title: "iOS Developer Intern",
     organization: "Infosys",
     description:
-      "Contributed to enterprise-level Java applications. Optimized database queries reducing load times by 15% and participated in agile sprints, gaining crucial exposure to large-scale codebase maintainability.",
+      "Developed admin-side modules for an iOS application, implementing CRUD operations and API integrations while working in Agile sprints using Git and JIRA.",
     accent: "forest",
   },
   {
-    years: "2022 - 2026",
+    years: "2022 – 2026",
     title: "B.Tech, Computer Science",
     organization: "SRM Institute of Science and Technology",
     description:
-      "Graduated with distinction. Focus on algorithmic complexity, distributed systems, and software engineering principles. Led the university coding club.",
+      "Focused on software engineering, system design, and real-world application development.",
     accent: "ink",
   },
 ];

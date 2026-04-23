@@ -11,7 +11,7 @@ type SiteFooterProps = {
 export function SiteFooter({
   inverted = false,
   brand = "Chanakya Bugata",
-  note = "© 2024 Chanakya Bugata. Built with precision and heritage.",
+  note = "© 2026 Chanakya Bugata. Built and shipped...",
 }: SiteFooterProps) {
   const wrapper = inverted
     ? "bg-[var(--surface-strong)] text-[#efe5db]"
@@ -32,6 +32,8 @@ export function SiteFooter({
             <Link
               key={link.label}
               href={link.href}
+              target="_blank"
+              rel="noreferrer"
               className={`transition-colors ${linkColor}`}
             >
               {link.label}

@@ -20,6 +20,10 @@ const jetBrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Chanakya Bugata",
   description: "Founder portfolio for Chanakya Bugata and NamaCart.",
+  icons: {
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
+  },
 };
 
 export default function RootLayout({
