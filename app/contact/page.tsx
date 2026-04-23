@@ -6,7 +6,7 @@ import { SiteHeader } from "@/components/site-header";
 export default function ContactPage() {
   return (
     <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
-      <SiteHeader current="contact" ctaLabel="Connect" ctaHref="#inquiry" brand="Scholar" />
+      <SiteHeader current="contact" ctaLabel="Connect" ctaHref="#inquiry" brand="Chanakya Bugata" />
 
       <main className="mx-auto grid max-w-[1180px] gap-10 px-6 py-14 lg:grid-cols-[0.86fr_1.14fr] lg:px-10 lg:py-20">
         <section>
@@ -123,7 +123,7 @@ export default function ContactPage() {
         </section>
       </main>
 
-      <SiteFooter brand="Scholar" note="© 2024 Scholar Foundation. Built with heritage and code." />
+      <SiteFooter brand="Chanakya Bugata" note="© 2024 Scholar Foundation. Built with heritage and code." />
     </div>
   );
 }

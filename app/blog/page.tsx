@@ -1,13 +1,19 @@
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { Search } from "lucide-react";
 
 import { PageIntro } from "@/components/page-intro";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { isBlogEnabled } from "@/lib/site-config";
 import { Pill } from "@/components/ui";
 import { blogPosts } from "@/lib/site-data";
 
 export default function BlogPage() {
+  if (!isBlogEnabled) {
+    notFound();
+  }
+
   return (
     <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
       <SiteHeader current="blog" ctaLabel="Download CV" ctaHref="#" brand="CHANAKYA" />

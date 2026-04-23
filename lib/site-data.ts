@@ -50,7 +50,7 @@ export const projects: Project[] = [
     slug: "namacart",
     title: "NamaCart Platform",
     summary:
-      "A specialized e-commerce ecosystem designed to bring traditional South Indian artisanal goods to modern consumers.",
+      "A specialized e-commerce ecosystem designed to bring traditional Indian artisanal goods to modern consumers.",
     description:
       "A full-stack commerce system focused on local retail digitization, catalog operations, merchant enablement, and logistics orchestration.",
     tags: ["Fintech", "E-Commerce", "Founder"],
@@ -159,7 +159,7 @@ export const technicalGroups = [
 
 export const experienceTimeline = [
   {
-    years: "2023 - Present",
+    years: "Starting",
     title: "Founder & Lead Engineer",
     organization: "NamaCart",
     description:
@@ -167,15 +167,15 @@ export const experienceTimeline = [
     accent: "accent",
   },
   {
-    years: "2022 - 2023",
-    title: "Systems Engineer Intern",
+    years: "2025",
+    title: "iOS Developer Intern",
     organization: "Infosys",
     description:
       "Contributed to enterprise-level Java applications. Optimized database queries reducing load times by 15% and participated in agile sprints, gaining crucial exposure to large-scale codebase maintainability.",
     accent: "forest",
   },
   {
-    years: "2019 - 2023",
+    years: "2022 - 2026",
     title: "B.Tech, Computer Science",
     organization: "SRM Institute of Science and Technology",
     description:

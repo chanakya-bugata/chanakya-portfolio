@@ -1,9 +1,10 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import { PageIntro } from "@/components/page-intro";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { MockFrame, Pill } from "@/components/ui";
+import { Pill } from "@/components/ui";
 import { projects } from "@/lib/site-data";
 
 export default function ProjectsPage() {
@@ -70,12 +71,43 @@ export default function ProjectsPage() {
               </div>
 
               <div className="border-l border-white/8 p-8 md:p-10">
-                <MockFrame
-                  title="Analytics"
-                  subtitle="Dashboard Mock"
-                  dark
-                  heightClass="h-full min-h-[520px]"
-                />
+                <div className="flex h-full min-h-[520px] items-center justify-center rounded-[20px] border border-white/8 bg-[radial-gradient(circle_at_top,#31261f,transparent_50%),linear-gradient(180deg,#1f1814,#181410)] p-10">
+                  <div className="space-y-8 text-center">
+                    <Image
+                      src="/images/namacart-logo-light.svg"
+                      alt="NamaCart logo"
+                      width={300}
+                      height={68}
+                      className="mx-auto h-auto w-[240px] sm:w-[300px]"
+                    />
+                    <div className="grid grid-cols-3 gap-4 border-t border-white/10 pt-8">
+                      <div>
+                        <p className="font-display text-3xl font-bold text-[var(--accent)]">
+                          4.2M+
+                        </p>
+                        <p className="mt-2 font-mono text-[0.7rem] uppercase tracking-[0.2em] text-[#8f8277]">
+                          Transactions
+                        </p>
+                      </div>
+                      <div>
+                        <p className="font-display text-3xl font-bold text-[var(--accent)]">
+                          850+
+                        </p>
+                        <p className="mt-2 font-mono text-[0.7rem] uppercase tracking-[0.2em] text-[#8f8277]">
+                          Vendors
+                        </p>
+                      </div>
+                      <div>
+                        <p className="font-display text-3xl font-bold text-[var(--accent)]">
+                          99.9%
+                        </p>
+                        <p className="mt-2 font-mono text-[0.7rem] uppercase tracking-[0.2em] text-[#8f8277]">
+                          Uptime
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </article>
