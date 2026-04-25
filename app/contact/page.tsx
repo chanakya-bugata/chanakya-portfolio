@@ -84,7 +84,6 @@ export default function ContactPage() {
             </article>
           </div>
         </section>
-
         <section id="inquiry" className="border border-[var(--border)] bg-[var(--surface)] p-8 shadow-[0_0_0_1px_rgba(223,211,196,0.35)]">
           <div className="border-t-4 border-[var(--accent)] pt-10">
             <h2 className="font-display text-5xl font-bold tracking-[-0.05em]">
@@ -99,7 +98,7 @@ export default function ContactPage() {
                   </span>
                   <input
                     className="mt-3 w-full border border-[var(--border)] bg-[var(--background)] px-5 py-5 text-xl text-[var(--foreground)] outline-none"
-                    defaultValue="Jane Doe"
+                    placeholder="Jane Doe"
                   />
                 </label>
                 <label className="block">
@@ -108,7 +107,7 @@ export default function ContactPage() {
                   </span>
                   <input
                     className="mt-3 w-full border border-[var(--border)] bg-[var(--background)] px-5 py-5 text-xl text-[var(--foreground)] outline-none"
-                    defaultValue="jane@example.com"
+                    placeholder="jane@example.com"
                   />
                 </label>
               </div>
@@ -117,7 +116,11 @@ export default function ContactPage() {
                 <span className="font-mono text-xs uppercase tracking-[0.24em] text-[var(--muted)]">
                   I am a...
                 </span>
-                <select className="mt-3 w-full border border-[var(--border)] bg-[var(--background)] px-5 py-5 text-xl text-[var(--foreground)] outline-none">
+                <select 
+                  className="mt-3 w-full border border-[var(--border)] bg-[var(--background)] px-5 py-5 text-xl text-[var(--foreground)] outline-none"
+                  defaultValue=""
+                >
+                  <option value="" disabled hidden>Choose your role...</option>
                   <option>Investor looking to connect</option>
                   <option>Recruiter evaluating fit</option>
                   <option>Founder seeking collaboration</option>
@@ -130,7 +133,7 @@ export default function ContactPage() {
                 </span>
                 <textarea
                   className="mt-3 h-[180px] w-full resize-none border border-[var(--border)] bg-[var(--background)] px-5 py-5 text-xl text-[var(--foreground)] outline-none"
-                  defaultValue="How can we align our goals?"
+                  placeholder="How can we align our goals?"
                 />
               </label>
 

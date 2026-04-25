@@ -15,7 +15,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
-      <SiteHeader current="about" />
+      <SiteHeader current="" />
 
       <main>
         <section className="mx-auto max-w-[1180px] px-6 pb-12 pt-14 lg:px-10 lg:pb-18 lg:pt-20">
