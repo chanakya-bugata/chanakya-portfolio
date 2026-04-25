@@ -1,4 +1,6 @@
+"use client";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 import { isBlogEnabled } from "@/lib/site-config";
 import { navItems } from "@/lib/site-data";
@@ -44,9 +46,17 @@ export function SiteHeader({
                 }`}
               >
                 {item.label}
-                {isActive ? (
-                  <span className="absolute inset-x-0 bottom-0 h-[2px] rounded-full bg-[var(--accent)]" />
-                ) : null}
+                {isActive && (
+                  <motion.span
+                    layoutId="active-nav"
+                    className="absolute inset-x-0 bottom-0 h-[2px] rounded-full bg-[var(--accent)]"
+                    transition={{
+                      type: "spring",
+                      stiffness: 380,
+                      damping: 30,
+                    }}
+                  />
+                )}
               </Link>
             );
           })}
