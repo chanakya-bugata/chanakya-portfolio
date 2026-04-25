@@ -1,10 +1,31 @@
+"use client";
+
 import Image from "next/image";
+import Link from "next/link";
+import { useState, useEffect } from "react";
 
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { Pill, SectionLabel } from "@/components/ui";
 
 export default function NamaCartPage() {
+  const [links, setLinks] = useState<Record<string, string>>({});
+
+  useEffect(() => {
+    async function fetchLinks() {
+      try {
+        const response = await fetch("/api/links");
+        if (response.ok) {
+          const data = await response.json();
+          setLinks(data);
+        }
+      } catch (error) {
+        console.error("Failed to fetch links:", error);
+      }
+    }
+    fetchLinks();
+  }, []);
+
   return (
     <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
       <SiteHeader current="projects" />
@@ -29,18 +50,20 @@ export default function NamaCartPage() {
               </p>
 
               <div className="mt-10 flex flex-wrap gap-4">
-                <a
-                  href="#contact"
+                <Link
+                  href={links.schedule_call || "/contact#inquiry"}
+                  target="_blank"
                   className="rounded-2xl bg-[var(--accent)] px-7 py-4 text-lg font-medium text-white"
                 >
-                  Schedule a Call
-                </a>
-                <a
-                  href="#"
+                  Let's Connect
+                </Link>
+                <Link
+                  href={links.pitch_deck || "#"}
+                  target="_blank"
                   className="rounded-2xl border border-white/16 px-7 py-4 text-lg font-medium text-[#efe6dc]"
                 >
                   Download Pitch Deck
-                </a>
+                </Link>
               </div>
             </div>
 

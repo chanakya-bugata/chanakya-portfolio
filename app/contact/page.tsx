@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BriefcaseBusiness, CalendarDays, Download, WalletCards, Loader2, CheckCircle2, AlertCircle } from "lucide-react";
 
 import { SiteFooter } from "@/components/site-footer";
@@ -16,6 +16,22 @@ export default function ContactPage() {
   });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const [links, setLinks] = useState<Record<string, string>>({});
+
+  useEffect(() => {
+    async function fetchLinks() {
+      try {
+        const response = await fetch("/api/links");
+        if (response.ok) {
+          const data = await response.json();
+          setLinks(data);
+        }
+      } catch (error) {
+        console.error("Failed to fetch links:", error);
+      }
+    }
+    fetchLinks();
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -82,14 +98,22 @@ export default function ContactPage() {
                 Explore thesis, traction, and structural models.
               </p>
               <div className="mt-auto space-y-3 pt-10">
-                <button className="flex w-full items-center justify-center gap-3 rounded-2xl bg-[var(--accent)] px-6 py-4 text-xl font-medium text-white shadow-[0_12px_24px_rgba(229,119,29,0.22)] transition-colors hover:bg-[var(--accent-strong)]">
+                <Link 
+                  href={links.schedule_call || "#"} 
+                  target="_blank"
+                  className="flex w-full items-center justify-center gap-3 rounded-2xl bg-[var(--accent)] px-6 py-4 text-xl font-medium !text-white shadow-[0_12px_24px_rgba(229,119,29,0.22)] transition-colors hover:bg-[var(--accent-strong)]"
+                >
                   <CalendarDays className="h-4 w-4" />
-                  Schedule Call
-                </button>
-                <button className="flex w-full items-center justify-center gap-3 rounded-2xl border border-[var(--accent)]/30 bg-white/70 px-6 py-4 text-xl font-medium text-[var(--accent)] transition-colors hover:bg-[var(--accent-soft)]">
+                  Let&apos;s Connect
+                </Link>
+                <Link 
+                  href={links.pitch_deck || "#"} 
+                  target="_blank"
+                  className="flex w-full items-center justify-center gap-3 rounded-2xl border border-[var(--accent)]/30 bg-white/70 px-6 py-4 text-xl font-medium text-[var(--accent)] transition-colors hover:bg-[var(--accent-soft)]"
+                >
                   <Download className="h-4 w-4" />
                   Pitch Deck
-                </button>
+                </Link>
               </div>
             </article>
 
@@ -119,9 +143,13 @@ export default function ContactPage() {
                 >
                   LinkedIn
                 </Link>
-                <button className="flex w-full items-center justify-center gap-3 rounded-2xl border border-[var(--forest)]/35 bg-white/70 px-6 py-4 text-xl font-medium text-[var(--forest)] transition-colors hover:bg-[#e6efe8]">
+                <Link 
+                  href={links.resume || "#"} 
+                  target="_blank"
+                  className="flex w-full items-center justify-center gap-3 rounded-2xl border border-[var(--forest)]/35 bg-white/70 px-6 py-4 text-xl font-medium text-[var(--forest)] transition-colors hover:bg-[#e6efe8]"
+                >
                   Resume
-                </button>
+                </Link>
               </div>
             </article>
           </div>
