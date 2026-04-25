@@ -1,11 +1,53 @@
-import Link from "next/link";
+"use client";
 
-import { BriefcaseBusiness, CalendarDays, Download, WalletCards } from "lucide-react";
+import Link from "next/link";
+import { useState } from "react";
+import { BriefcaseBusiness, CalendarDays, Download, WalletCards, Loader2, CheckCircle2, AlertCircle } from "lucide-react";
 
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 
 export default function ContactPage() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    role: "",
+    message: "",
+  });
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("loading");
+    setErrorMessage("");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Something went wrong. Please try again.");
+      }
+
+      setStatus("success");
+      setFormData({ name: "", email: "", role: "", message: "" });
+    } catch (err: any) {
+      setStatus("error");
+      setErrorMessage(err.message);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
       <SiteHeader current="contact" ctaLabel="Connect" ctaHref="#inquiry" brand="Chanakya Bugata" />
@@ -84,65 +126,115 @@ export default function ContactPage() {
             </article>
           </div>
         </section>
+        
         <section id="inquiry" className="border border-[var(--border)] bg-[var(--surface)] p-8 shadow-[0_0_0_1px_rgba(223,211,196,0.35)]">
           <div className="border-t-4 border-[var(--accent)] pt-10">
             <h2 className="font-display text-5xl font-bold tracking-[-0.05em]">
               Direct Inquiry
             </h2>
 
-            <form className="mt-10 space-y-8">
-              <div className="grid gap-6 md:grid-cols-2">
-                <label className="block">
-                  <span className="font-mono text-xs uppercase tracking-[0.24em] text-[var(--muted)]">
-                    Full Name
-                  </span>
-                  <input
-                    className="mt-3 w-full border border-[var(--border)] bg-[var(--background)] px-5 py-5 text-xl text-[var(--foreground)] outline-none"
-                    placeholder="Jane Doe"
-                  />
-                </label>
-                <label className="block">
-                  <span className="font-mono text-xs uppercase tracking-[0.24em] text-[var(--muted)]">
-                    Email Address
-                  </span>
-                  <input
-                    className="mt-3 w-full border border-[var(--border)] bg-[var(--background)] px-5 py-5 text-xl text-[var(--foreground)] outline-none"
-                    placeholder="jane@example.com"
-                  />
-                </label>
-              </div>
-
-              <label className="block">
-                <span className="font-mono text-xs uppercase tracking-[0.24em] text-[var(--muted)]">
-                  I am a...
-                </span>
-                <select 
-                  className="mt-3 w-full border border-[var(--border)] bg-[var(--background)] px-5 py-5 text-xl text-[var(--foreground)] outline-none"
-                  defaultValue=""
+            {status === "success" ? (
+              <div className="mt-10 flex flex-col items-center justify-center rounded-2xl border border-green-200 bg-green-50 p-10 text-center">
+                <CheckCircle2 className="h-16 w-16 text-green-600" />
+                <h3 className="mt-6 text-3xl font-bold text-green-900">Message Received!</h3>
+                <p className="mt-4 text-xl text-green-700">
+                  Thank you for reaching out. I&apos;ll get back to you shortly.
+                </p>
+                <button 
+                  onClick={() => setStatus("idle")}
+                  className="mt-8 rounded-xl bg-green-600 px-8 py-3 text-xl font-medium text-white transition-colors hover:bg-green-700"
                 >
-                  <option value="" disabled hidden>Choose your role...</option>
-                  <option>Investor looking to connect</option>
-                  <option>Recruiter evaluating fit</option>
-                  <option>Founder seeking collaboration</option>
-                </select>
-              </label>
-
-              <label className="block">
-                <span className="font-mono text-xs uppercase tracking-[0.24em] text-[var(--muted)]">
-                  Message
-                </span>
-                <textarea
-                  className="mt-3 h-[180px] w-full resize-none border border-[var(--border)] bg-[var(--background)] px-5 py-5 text-xl text-[var(--foreground)] outline-none"
-                  placeholder="How can we align our goals?"
-                />
-              </label>
-
-              <div className="flex justify-end border-t border-[var(--border)] pt-8">
-                <button className="bg-[#211b17] px-10 py-5 text-2xl font-medium text-white">
-                  Submit →
+                  Send another message
                 </button>
               </div>
-            </form>
+            ) : (
+              <form onSubmit={handleSubmit} className="mt-10 space-y-8">
+                <div className="grid gap-6 md:grid-cols-2">
+                  <label className="block">
+                    <span className="font-mono text-xs uppercase tracking-[0.24em] text-[var(--muted)]">
+                      Full Name
+                    </span>
+                    <input
+                      required
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      className="mt-3 w-full border border-[var(--border)] bg-[var(--background)] px-5 py-5 text-xl text-[var(--foreground)] outline-none transition-focus focus:border-[var(--accent)]"
+                      placeholder="Jane Doe"
+                    />
+                  </label>
+                  <label className="block">
+                    <span className="font-mono text-xs uppercase tracking-[0.24em] text-[var(--muted)]">
+                      Email Address
+                    </span>
+                    <input
+                      required
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      className="mt-3 w-full border border-[var(--border)] bg-[var(--background)] px-5 py-5 text-xl text-[var(--foreground)] outline-none transition-focus focus:border-[var(--accent)]"
+                      placeholder="jane@example.com"
+                    />
+                  </label>
+                </div>
+
+                <label className="block">
+                  <span className="font-mono text-xs uppercase tracking-[0.24em] text-[var(--muted)]">
+                    I am a...
+                  </span>
+                  <select 
+                    required
+                    name="role"
+                    value={formData.role}
+                    onChange={handleChange}
+                    className="mt-3 w-full border border-[var(--border)] bg-[var(--background)] px-5 py-5 text-xl text-[var(--foreground)] outline-none transition-focus focus:border-[var(--accent)]"
+                  >
+                    <option value="" disabled>Choose your role...</option>
+                    <option value="Investor looking to connect">Investor looking to connect</option>
+                    <option value="Recruiter evaluating fit">Recruiter evaluating fit</option>
+                    <option value="Founder seeking collaboration">Founder seeking collaboration</option>
+                  </select>
+                </label>
+
+                <label className="block">
+                  <span className="font-mono text-xs uppercase tracking-[0.24em] text-[var(--muted)]">
+                    Message
+                  </span>
+                  <textarea
+                    required
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    className="mt-3 h-[180px] w-full resize-none border border-[var(--border)] bg-[var(--background)] px-5 py-5 text-xl text-[var(--foreground)] outline-none transition-focus focus:border-[var(--accent)]"
+                    placeholder="How can we align our goals?"
+                  />
+                </label>
+
+                {status === "error" && (
+                  <div className="flex items-center gap-3 rounded-xl border border-red-200 bg-red-50 p-4 text-red-700">
+                    <AlertCircle className="h-5 w-5 shrink-0" />
+                    <p className="text-lg">{errorMessage}</p>
+                  </div>
+                )}
+
+                <div className="flex justify-end border-t border-[var(--border)] pt-8">
+                  <button 
+                    disabled={status === "loading"}
+                    className="flex items-center gap-3 bg-[#211b17] px-10 py-5 text-2xl font-medium text-white transition-opacity hover:opacity-90 disabled:opacity-50"
+                  >
+                    {status === "loading" ? (
+                      <>
+                        <Loader2 className="h-6 w-6 animate-spin" />
+                        Sending...
+                      </>
+                    ) : (
+                      "Submit →"
+                    )}
+                  </button>
+                </div>
+              </form>
+            )}
           </div>
         </section>
       </main>
