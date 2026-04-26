@@ -27,10 +27,10 @@ export default function ProjectsPage() {
           }
         />
 
-        <section className="mx-auto max-w-[1180px] px-6 pb-18 lg:px-10">
-          <article className="overflow-hidden rounded-[24px] border border-[var(--accent)] bg-[#201a16] text-[#f4ede5] shadow-[10px_10px_0_var(--accent)]">
+        <section className="mx-auto max-w-[1180px] px-6 pb-12 lg:px-10">
+          <article className="overflow-hidden rounded-[24px] border border-[var(--accent)] bg-[#201a16] text-[#f4ede5] shadow-[6px_6px_0_var(--accent)] sm:shadow-[10px_10px_0_var(--accent)]">
             <div className="grid lg:grid-cols-[1.2fr_1fr]">
-              <div className="p-10 md:p-14">
+              <div className="p-6 sm:p-10 md:p-14">
                 <div className="flex flex-wrap gap-2">
                   <Pill tone="accent">Featured Platform</Pill>
                   <Pill> B2B Commerce </Pill>
@@ -40,20 +40,20 @@ export default function ProjectsPage() {
                   alt="NamaCart mark"
                   width={64}
                   height={64}
-                  className="mt-10 h-14 w-14"
+                  className="mt-6 h-10 w-10 sm:mt-10 sm:h-14 sm:w-14"
                 />
-                <h2 className="font-display mt-6 text-6xl font-black tracking-[-0.06em]">
+                <h2 className="font-display mt-6 text-[2.6rem] font-black leading-[0.95] tracking-[-0.06em] sm:text-6xl">
                   Nama<span className="text-[var(--accent)]">Cart</span>{" "}
-                  <span className="text-[#f4ede5]">(Early Stage)</span>
+                  <span className="text-[#f4ede5] text-2xl sm:text-4xl">(Early Stage)</span>
                 </h2>
-                <p className="mt-8 max-w-[560px] text-xl leading-9 text-[#bbaea1]">
+                <p className="mt-6 max-w-[560px] text-lg leading-8 text-[#bbaea1] sm:mt-8 sm:text-xl sm:leading-9">
                   {featured.description}
                 </p>
 
-                <div className="mt-16 flex flex-wrap gap-4 border-t border-white/10 pt-8">
+                <div className="mt-10 flex flex-col gap-4 border-t border-white/10 pt-8 sm:mt-16 sm:flex-row sm:flex-wrap">
                   <Link
                     href={`/projects/${featured.slug}`}
-                    className="inline-flex rounded-2xl bg-[var(--accent)] px-7 py-4 text-lg font-medium text-white"
+                    className="flex justify-center rounded-2xl bg-[var(--accent)] px-7 py-4 text-lg font-medium text-white"
                   >
                     View Case Study
                   </Link>
@@ -61,15 +61,15 @@ export default function ProjectsPage() {
                     href="https://namacart.in"
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex rounded-2xl border border-white/14 bg-white/5 px-7 py-4 text-lg font-medium text-[#f4ede5] transition-colors hover:bg-white/10"
+                    className="flex justify-center rounded-2xl border border-white/14 bg-white/5 px-7 py-4 text-lg font-medium text-[#f4ede5] transition-colors hover:bg-white/10"
                   >
                     Visit NamaCart.in
                   </Link>
                 </div>
               </div>
 
-              <div className="border-l border-white/8 p-8 md:p-10">
-                <div className="relative h-full min-h-[520px] overflow-hidden rounded-[20px] border border-white/8 bg-[radial-gradient(circle_at_top,#31261f,transparent_50%),linear-gradient(180deg,#1f1814,#181410)] p-4">
+              <div className="border-t border-white/8 lg:border-l lg:border-t-0 p-6 sm:p-8 md:p-10">
+                <div className="relative h-full min-h-[300px] sm:min-h-[520px] overflow-hidden rounded-[20px] border border-white/8 bg-[radial-gradient(circle_at_top,#31261f,transparent_50%),linear-gradient(180deg,#1f1814,#181410)] p-4">
                   <Image
                     src="/images/phone-mock.png"
                     alt="NamaCart mobile product preview"
@@ -82,6 +82,7 @@ export default function ProjectsPage() {
             </div>
           </article>
         </section>
+
 
         <section className="mx-auto max-w-[1180px] px-6 pb-24 lg:px-10">
           <div className="mb-8 flex items-end justify-between border-b border-[var(--border)] pb-4">
