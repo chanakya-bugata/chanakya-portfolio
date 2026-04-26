@@ -55,7 +55,7 @@ export default function AboutPage() {
             <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
               <div className="flex items-center gap-3 border border-[var(--border)] bg-[var(--surface)] px-4 py-3 text-sm text-[var(--muted)] sm:px-5 sm:py-4 sm:text-base">
                 <Mail className="h-4 w-4 shrink-0" />
-                <span className="truncate">chanakya.in@gmail.com</span>
+                <span className="truncate">chanakya.offc@gmail.com</span>
               </div>
               <div className="flex items-center gap-3 border border-[var(--border)] bg-[var(--surface)] px-4 py-3 text-sm text-[var(--muted)] sm:px-5 sm:py-4 sm:text-base">
                 <MapPin className="h-4 w-4 shrink-0" />
