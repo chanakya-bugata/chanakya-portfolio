@@ -125,6 +125,17 @@ export default function Home() {
                       stat.value
                     )}
                   </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="mx-auto max-w-[1180px] px-6 pb-24 pt-10 lg:px-10">
+          <div className="mb-10">
+            <h2 className="font-display text-4xl font-black tracking-[-0.05em] sm:text-5xl">
+              Selected Works
+            </h2>
             <p className="font-mono mt-4 text-[0.78rem] uppercase tracking-[0.24em] text-[var(--muted)]">
               Technical Artifacts & Case Studies
             </p>
