@@ -52,7 +52,7 @@ export function SiteHeader({
       <div className="mx-auto flex max-w-[1180px] items-center justify-between px-6 py-4 lg:px-10 lg:py-5">
         <Link
           href="/"
-          className="font-display relative z-50 text-[1.6rem] font-bold tracking-[-0.04em] sm:text-[2rem]"
+          className="font-display relative z-50 text-[1.4rem] font-bold tracking-[-0.04em] sm:text-[1.8rem] md:text-[2rem]"
           onClick={() => setIsMobileMenuOpen(false)}
         >
           {brand}
@@ -127,61 +127,64 @@ export function SiteHeader({
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 flex flex-col bg-[var(--background)] px-6 pt-24 md:hidden"
+            className="fixed inset-0 z-40 bg-[var(--background)] md:hidden"
           >
-            <nav className="flex flex-col gap-6">
-              {visibleNavItems.map((item, index) => {
-                const isActive = item.key === current;
-                return (
-                  <motion.div
-                    key={item.key}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.1 + index * 0.05 }}
-                  >
-                    <Link
-                      href={item.href}
-                      className={`font-display text-4xl font-bold tracking-tight ${
-                        isActive ? "text-[var(--accent)]" : "text-[var(--foreground)]"
-                      }`}
-                      onClick={() => setIsMobileMenuOpen(false)}
+            <div className="flex h-full flex-col px-6 pt-24 pb-12">
+              <nav className="flex flex-col gap-8">
+                {visibleNavItems.map((item, index) => {
+                  const isActive = item.key === current;
+                  return (
+                    <motion.div
+                      key={item.key}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.1 + index * 0.05 }}
                     >
-                      {item.label}
-                    </Link>
-                  </motion.div>
-                );
-              })}
-            </nav>
+                      <Link
+                        href={item.href}
+                        className={`font-display text-5xl font-bold tracking-tight transition-colors ${
+                          isActive ? "text-[var(--accent)]" : "text-[var(--foreground)] active:text-[var(--accent)]"
+                        }`}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        {item.label}
+                      </Link>
+                    </motion.div>
+                  );
+                })}
+              </nav>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="mt-auto mb-12"
-            >
-              <Link
-                href={ctaHref}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className={`flex w-full items-center justify-center rounded-2xl py-6 text-2xl font-bold shadow-lg ${
-                  isNamaCartCta
-                    ? "font-display bg-[#2c211b] text-[#f7efe6]"
-                    : "bg-[var(--accent)] text-white"
-                }`}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.3 }}
+                className="mt-auto"
               >
-                {isNamaCartCta ? (
-                  <>
-                    <span className="text-[#f4ede5]">Nama</span>
-                    <span className="text-[var(--accent)]">Cart</span> {"->"}
-                  </>
-                ) : (
-                  ctaLabel
-                )}
-              </Link>
-            </motion.div>
+                <div className="mb-6 h-px bg-[var(--border)]" />
+                <Link
+                  href={ctaHref}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={`flex w-full items-center justify-center rounded-3xl py-6 text-2xl font-bold shadow-xl transition-transform active:scale-[0.98] ${
+                    isNamaCartCta
+                      ? "font-display bg-[#2c211b] text-[#f7efe6]"
+                      : "bg-[var(--accent)] text-white"
+                  }`}
+                >
+                  {isNamaCartCta ? (
+                    <>
+                      <span className="text-[#f4ede5]">Nama</span>
+                      <span className="text-[var(--accent)]">Cart</span> {"->"}
+                    </>
+                  ) : (
+                    ctaLabel
+                  )}
+                </Link>
+              </motion.div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
