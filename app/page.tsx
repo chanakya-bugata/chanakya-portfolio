@@ -18,34 +18,34 @@ export default function Home() {
       <SiteHeader current="" />
 
       <main>
-        <section className="mx-auto max-w-[1180px] px-6 pb-12 pt-14 lg:px-10 lg:pb-18 lg:pt-20">
+        <section className="mx-auto max-w-[1180px] px-6 pb-12 pt-10 lg:px-10 lg:pb-18 lg:pt-20">
           <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
             <div className="max-w-[640px]">
-              <div className="inline-flex rounded-full border border-[var(--border)] bg-[var(--surface)] px-4 py-2 font-mono text-[0.76rem] font-semibold uppercase tracking-[0.24em] text-[var(--accent)]">
+              <div className="inline-flex rounded-full border border-[var(--border)] bg-[var(--surface)] px-4 py-2 font-mono text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-[var(--accent)] sm:text-[0.76rem] sm:tracking-[0.24em]">
                 Accenture Intern & Building NamaCart
               </div>
 
-              <h1 className="font-display mt-8 text-5xl leading-[0.95] font-black tracking-[-0.05em] text-[var(--foreground)] sm:text-6xl lg:text-[5.2rem]">
+              <h1 className="font-display mt-6 text-[2.8rem] leading-[0.95] font-black tracking-[-0.05em] text-[var(--foreground)] sm:mt-8 sm:text-6xl lg:text-[5.2rem]">
                 Engineering{" "}
                 <span className="text-[var(--accent)]">Real products.</span>
               </h1>
 
-              <p className="mt-8 max-w-[620px] text-xl leading-9 text-[var(--muted)]">
+              <p className="mt-6 text-lg leading-8 text-[var(--muted)] sm:mt-8 sm:text-xl sm:leading-9">
                 I engineer sophisticated digital experiences bridging
                 Indian heritage with modern technological precision. Founder of
                 NamaCart.
               </p>
 
-              <div className="mt-10 flex flex-wrap gap-4">
+              <div className="mt-8 flex flex-col gap-4 sm:mt-10 sm:flex-row">
                 <Link
                   href="/projects"
-                  className="rounded-2xl bg-[var(--accent)] px-7 py-5 text-xl font-medium text-white transition-colors hover:bg-[var(--accent-strong)]"
+                  className="flex justify-center rounded-2xl bg-[var(--accent)] px-7 py-4 text-lg font-medium text-white transition-colors hover:bg-[var(--accent-strong)] sm:py-5 sm:text-xl"
                 >
                   View Projects {"->"}
                 </Link>
                 <Link
                   href="/contact"
-                  className="rounded-2xl border border-[var(--accent)] px-7 py-5 text-xl font-medium text-[var(--accent)] transition-colors hover:bg-[var(--accent-soft)]"
+                  className="flex justify-center rounded-2xl border border-[var(--accent)] px-7 py-4 text-lg font-medium text-[var(--accent)] transition-colors hover:bg-[var(--accent-soft)] sm:py-5 sm:text-xl"
                 >
                   Get in Touch
                 </Link>
@@ -61,7 +61,7 @@ export default function Home() {
                 Founder
               </div>
           
-              <div className="relative overflow-hidden rounded-[32px] border border-[#2f2822] bg-[#17141d] p-5 shadow-[0_28px_80px_rgba(39,28,22,0.22)]">
+              <div className="relative overflow-hidden rounded-[32px] border border-[#2f2822] bg-[#17141d] p-3 sm:p-5 shadow-[0_28px_80px_rgba(39,28,22,0.22)]">
                 <div className="overflow-hidden rounded-[26px] border border-white/8 bg-[radial-gradient(circle_at_top,#3d3645,transparent_32%),linear-gradient(180deg,#25202b,#15111b)]">
                   <div className="flex items-center justify-between border-b border-white/8 px-5 py-4">
                     <div className="flex gap-2">
@@ -78,14 +78,14 @@ export default function Home() {
                     alt="Chanakya Bugata portrait"
                     width={900}
                     height={900}
-                    className="h-[560px] w-full object-cover object-top"
+                    className="h-[400px] w-full object-cover object-top sm:h-[560px]"
                     priority
                   />
                   <div className="border-t border-white/8 bg-[linear-gradient(180deg,rgba(23,17,27,0.96),rgba(23,17,27,0.92))] px-6 py-5">
-                    <p className="font-display text-2xl font-bold tracking-[-0.04em] text-[#f6ede5]">
+                    <p className="font-display text-xl font-bold tracking-[-0.04em] text-[#f6ede5] sm:text-2xl">
                       Systems thinker with a bias for shipping.
                     </p>
-                    <p className="mt-2 font-mono text-[0.72rem] uppercase tracking-[0.22em] text-[#b9ab9f]">
+                    <p className="mt-2 font-mono text-[0.68rem] uppercase tracking-[0.22em] text-[#b9ab9f] sm:text-[0.72rem]">
                       From idea to working product.
                     </p>
                   </div>
@@ -94,22 +94,26 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="mt-18 border-y border-[var(--border)] py-6">
-            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+          <div className="mt-12 border-y border-[var(--border)] py-6 sm:mt-18">
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
               {homeStats.map((stat, index) => (
                 <div
                   key={stat.label}
-                  className={`px-6 py-4 ${
+                  className={`px-4 py-4 sm:px-6 ${
                     index !== homeStats.length - 1
                       ? "xl:border-r xl:border-[var(--border)]"
                       : ""
+                  } ${
+                    index % 2 === 0 && index !== homeStats.length - 1
+                      ? "sm:border-r sm:border-[var(--border)] xl:border-r"
+                      : ""
                   }`}
                 >
-                  <p className="font-mono text-[0.78rem] uppercase tracking-[0.24em] text-[var(--muted)]">
+                  <p className="font-mono text-[0.7rem] uppercase tracking-[0.2em] text-[var(--muted)] sm:text-[0.78rem] sm:tracking-[0.24em]">
                     {stat.label}
                   </p>
                   <p
-                    className={`font-display mt-3 text-2xl font-bold tracking-[-0.04em] sm:text-[2.1rem] ${
+                    className={`font-display mt-2 text-xl font-bold tracking-[-0.04em] sm:mt-3 sm:text-2xl md:text-[2.1rem] ${
                       "accent" in stat && stat.accent ? "text-[var(--foreground)]" : ""
                     }`}
                   >
@@ -121,17 +125,6 @@ export default function Home() {
                       stat.value
                     )}
                   </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="mx-auto max-w-[1180px] px-6 pb-24 pt-10 lg:px-10">
-          <div className="mb-10">
-            <h2 className="font-display text-4xl font-black tracking-[-0.05em] sm:text-5xl">
-              Selected Works
-            </h2>
             <p className="font-mono mt-4 text-[0.78rem] uppercase tracking-[0.24em] text-[var(--muted)]">
               Technical Artifacts & Case Studies
             </p>

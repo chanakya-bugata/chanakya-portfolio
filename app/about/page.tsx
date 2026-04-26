@@ -11,7 +11,7 @@ export default function AboutPage() {
     <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
       <SiteHeader current="about" />
 
-      <main className="mx-auto max-w-[1180px] px-6 py-14 lg:px-10 lg:py-18">
+      <main className="mx-auto max-w-[1180px] px-6 py-10 lg:px-10 lg:py-18">
         <section className="grid gap-12 border-b border-[var(--border)] pb-14 lg:grid-cols-[0.8fr_1fr] lg:items-start">
           <div className="relative">
             <div className="absolute inset-x-3 top-3 h-full border border-[var(--border)] bg-[#efe3d8]" />
@@ -22,21 +22,21 @@ export default function AboutPage() {
                   alt="Chanakya Bugata founder portrait"
                   width={900}
                   height={1200}
-                  className="h-[520px] w-full object-cover"
+                  className="h-[360px] w-full object-cover sm:h-[520px]"
                 />
               </div>
             </div>
-            <div className="absolute bottom-[-16px] right-[-12px] border border-[var(--accent)] bg-[var(--surface)] px-5 py-4 font-mono text-sm uppercase tracking-[0.18em] text-[var(--accent)] shadow-[6px_6px_0_var(--accent)]">
+            <div className="absolute bottom-[-16px] right-[-4px] border border-[var(--accent)] bg-[var(--surface)] px-4 py-3 font-mono text-xs uppercase tracking-[0.18em] text-[var(--accent)] shadow-[4px_4px_0_var(--accent)] sm:right-[-12px] sm:px-5 sm:py-4 sm:text-sm sm:shadow-[6px_6px_0_var(--accent)]">
               Founder, NamaCart
             </div>
           </div>
 
           <div>
-            <h1 className="font-display text-5xl font-black tracking-[-0.05em] sm:text-6xl lg:text-[4.7rem]">
+            <h1 className="font-display text-[2.8rem] font-black leading-[0.95] tracking-[-0.05em] sm:text-6xl lg:text-[4.7rem]">
               Engineer. Builder. <span className="text-[var(--accent)]">Scholar.</span>
             </h1>
 
-            <div className="mt-8 space-y-6 text-xl leading-9 text-[var(--muted)]">
+            <div className="mt-8 space-y-6 text-lg leading-8 text-[var(--muted)] sm:text-xl sm:leading-9">
               <p>
                 I build robust, scalable systems that solve tangible problems.
                 Rooted in strong theoretical foundations from SRM University and
@@ -52,26 +52,26 @@ export default function AboutPage() {
               </p>
             </div>
 
-            <div className="mt-10 flex flex-wrap gap-4">
-              <div className="flex items-center gap-3 border border-[var(--border)] bg-[var(--surface)] px-5 py-4 text-[var(--muted)]">
-                <Mail className="h-4 w-4" />
-                chanakya.in@gmail.com
+            <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
+              <div className="flex items-center gap-3 border border-[var(--border)] bg-[var(--surface)] px-4 py-3 text-sm text-[var(--muted)] sm:px-5 sm:py-4 sm:text-base">
+                <Mail className="h-4 w-4 shrink-0" />
+                <span className="truncate">chanakya.in@gmail.com</span>
               </div>
-              <div className="flex items-center gap-3 border border-[var(--border)] bg-[var(--surface)] px-5 py-4 text-[var(--muted)]">
-                <MapPin className="h-4 w-4" />
+              <div className="flex items-center gap-3 border border-[var(--border)] bg-[var(--surface)] px-4 py-3 text-sm text-[var(--muted)] sm:px-5 sm:py-4 sm:text-base">
+                <MapPin className="h-4 w-4 shrink-0" />
                 India
               </div>
-              <div className="flex items-center gap-3 border border-[var(--border)] bg-[var(--surface)] px-5 py-4 text-[var(--muted)]">
-                <Download className="h-4 w-4" />
+              <div className="flex items-center gap-3 border border-[var(--border)] bg-[var(--surface)] px-4 py-3 text-sm text-[var(--muted)] sm:px-5 sm:py-4 sm:text-base">
+                <Download className="h-4 w-4 shrink-0" />
                 Curriculum Vitae
               </div>
             </div>
           </div>
         </section>
 
-        <section className="border-b border-[var(--border)] py-14">
+        <section className="border-b border-[var(--border)] py-12 sm:py-14">
           <SectionLabel eyebrow="Capabilities" title="Technical Matrix" />
-          <div className="grid gap-4 lg:grid-cols-3">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {technicalGroups.map((group) => (
               <article
                 key={group.title}
@@ -80,7 +80,7 @@ export default function AboutPage() {
                 <h3 className="font-display text-2xl font-bold tracking-[-0.03em]">
                   {group.title}
                 </h3>
-                <div className="mt-5 flex flex-wrap gap-3">
+                <div className="mt-5 flex flex-wrap gap-2 sm:gap-3">
                   {group.items.map((item, index) => (
                     <Pill
                       key={item}
@@ -101,12 +101,12 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section className="py-16">
+        <section className="py-12 sm:py-16">
           <SectionLabel eyebrow="Journey" title="Experience & Education" />
 
-          <div className="relative mt-10">
+          <div className="relative mt-8 sm:mt-10">
             <div className="absolute bottom-0 left-1/2 top-0 hidden w-px -translate-x-1/2 bg-[var(--border)] lg:block" />
-            <div className="space-y-12">
+            <div className="space-y-8 sm:space-y-12">
               {experienceTimeline.map((item, index) => {
                 const isRight = index % 2 === 0;
                 const accentClass =
@@ -125,7 +125,7 @@ export default function AboutPage() {
                 return (
                   <div
                     key={item.title}
-                    className={`grid gap-8 lg:grid-cols-2 ${isRight ? "" : ""}`}
+                    className="grid gap-4 sm:gap-8 lg:grid-cols-2"
                   >
                     <div
                       className={`hidden lg:flex ${isRight ? "justify-end pr-8" : "order-2 pl-8"}`}
@@ -136,21 +136,21 @@ export default function AboutPage() {
                     </div>
 
                     <article
-                      className={`relative border border-[var(--border)] bg-[var(--surface)] p-8 ${
+                      className={`relative border border-[var(--border)] bg-[var(--surface)] p-6 sm:p-8 ${
                         isRight ? "lg:ml-8" : "lg:mr-8 lg:order-1"
                       } border-l-4 ${accentClass}`}
                     >
                       <span className={`absolute left-[-10px] top-12 hidden h-4 w-4 rounded-full ${dotClass} lg:block`} />
-                      <p className="font-mono text-sm uppercase tracking-[0.18em] text-[var(--muted)] lg:hidden">
+                      <p className="font-mono text-xs uppercase tracking-[0.18em] text-[var(--muted)] sm:text-sm lg:hidden">
                         {item.years}
                       </p>
-                      <h3 className="font-display mt-2 text-4xl font-bold tracking-[-0.05em]">
+                      <h3 className="font-display mt-2 text-3xl font-bold tracking-[-0.05em] sm:text-4xl">
                         {item.title}
                       </h3>
-                      <p className="mt-2 text-lg font-medium text-[var(--accent)]">
+                      <p className="mt-2 text-base font-medium text-[var(--accent)] sm:text-lg">
                         {item.organization}
                       </p>
-                      <p className="mt-5 text-lg leading-8 text-[var(--muted)]">
+                      <p className="mt-4 text-base leading-7 text-[var(--muted)] sm:mt-5 sm:text-lg sm:leading-8">
                         {item.description}
                       </p>
                     </article>
